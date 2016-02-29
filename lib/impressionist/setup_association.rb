@@ -39,6 +39,8 @@ module Impressionist
                         :user_name,
                         :patient_MRN,
                         :patient_name,
+                        :hospital_id,
+                        :hospital_system_id,
                         :params)
       end
 

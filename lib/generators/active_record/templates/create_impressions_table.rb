@@ -3,6 +3,8 @@ class CreateImpressionsTable < ActiveRecord::Migration
     create_table :impressions, :force => true do |t|
       t.string :impressionable_type
       t.integer :impressionable_id
+      t.integer :hospital_id
+      t.integer :hospital_system_id
       t.integer :user_id
       t.string :user_name
       t.string :patient_MRN

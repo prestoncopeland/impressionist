@@ -50,6 +50,8 @@ module ImpressionistController
         :user_name => user_name,
         :patient_MRN => patient_MRN,
         :patient_name => patient_name,
+        :hospital_id => hospital_id,
+        :hospital_system_id => hospital_system_id,
         :request_hash => @impressionist_hash,
         :session_hash => session_hash,
         :ip_address => request.remote_ip,
@@ -165,6 +167,16 @@ module ImpressionistController
     def patient_MRN
       patient_MRN = get_patient_id.present? ? Patient.find_by_id(get_patient_id).patient_number : nil rescue nil if patient_MRN.blank?
       patient_MRN
+    end
+
+    def hospital_id
+      hospital_id = user_id.present? ? User.find_by_id(user_id).hospital.id : nil rescue nil if hospital_id.blank?
+      hospital_id
+    end
+
+    def hospital_system_id
+      hospital_system_id = user_id.present? ? User.find_by_id(user_id).hospital_system.id : nil rescue nil if hospital_system_id.blank?
+      hospital_system_id
     end
   end
 end
