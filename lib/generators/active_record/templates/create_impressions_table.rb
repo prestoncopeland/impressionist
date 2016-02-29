@@ -4,6 +4,9 @@ class CreateImpressionsTable < ActiveRecord::Migration
       t.string :impressionable_type
       t.integer :impressionable_id
       t.integer :user_id
+      t.string :user_name
+      t.string :patient_MRN
+      t.string :patient_name
       t.string :controller_name
       t.string :action_name
       t.string :view_name

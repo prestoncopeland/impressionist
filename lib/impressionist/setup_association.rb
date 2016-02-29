@@ -36,6 +36,9 @@ module Impressionist
                         :referrer,
                         :message,
                         :user_id,
+                        :user_name,
+                        :patient_MRN,
+                        :patient_name,
                         :params)
       end
 
