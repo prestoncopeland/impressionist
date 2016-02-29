@@ -103,7 +103,7 @@ module ImpressionistController
       request_param = params_hash
       impressions.detect{|impression| impression.params == request_param }.nil?
     end
-    
+
     # creates the query to check for uniqueness
     def unique_query(unique_opts,impressionable=nil)
       full_statement = direct_create_statement({},impressionable)
@@ -141,6 +141,27 @@ module ImpressionistController
       user_id = @current_user ? @current_user.id : nil rescue nil
       user_id = current_user ? current_user.id : nil rescue nil if user_id.blank?
       user_id
+    end
+
+    def user_name
+      user_name = user_id.present? ? User.find_by_id(user_id).name : nil rescue nil if user_name.blank?
+      user_name
+    end
+
+    def get_patient_id
+      patient_id = @patient ? @patient.id : nil rescue nil
+      patient_id = params[:patient_id] ? params[:patient_id] : nil rescue nil if patient_id.blank?
+      patient_id
+    end
+
+    def patient_name
+      patient_name = get_patient_id.present? ? Patient.find_by_id(get_patient_id).fullname : nil rescue nil if patient_name.blank?
+      patient_name
+    end
+
+    def patient_MRN
+      patient_MRN = get_patient_id.present? ? Patient.find_by_id(get_patient_id).patient_number : nil rescue nil if patient_MRN.blank?
+      patient_MRN
     end
   end
 end
