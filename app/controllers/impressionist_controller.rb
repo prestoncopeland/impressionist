@@ -138,7 +138,7 @@ module ImpressionistController
     end
 
     def params_hash
-      request.params.except(:controller, :action, :id, :password, :password_confirmation)
+      request.params.except(:controller, :action, :id, :session)
     end
 
     #use both @current_user and current_user helper
