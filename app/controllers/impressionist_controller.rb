@@ -155,8 +155,8 @@ module ImpressionistController
 
     def get_patient_id
       patient_id = @patient ? @patient.id : nil rescue nil
-      patient_id = patient ? patient.id : nil rescue nil
-      patient_id = params[:patient_id] ? params[:patient_id] : nil rescue nil if patient_id.blank?
+      patient_id ||= patient ? patient.id : nil rescue nil
+      patient_id ||= params[:patient_id] ? params[:patient_id] : nil rescue nil if patient_id.blank?
       patient_id
     end
 
