@@ -138,7 +138,7 @@ module ImpressionistController
     end
 
     def params_hash
-      request.query_parameters
+      request.params.slice(:search, :provider_id, :remove_reason, :referral_id, :patient_id, :my_patients, :user_id, :view)
     end
 
     #use both @current_user and current_user helper
